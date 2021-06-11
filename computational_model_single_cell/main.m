@@ -26,18 +26,18 @@ i = 1;
 for I=ints
     
         
-        incidentWavelength = 500e-9; %m
-        %  absorbance = 1.5e6; %photons absorbed per metre of film thickness, #photons / m
-        absorbance = 10e6; %photons absorbed per metre of film thickness, #photons / m
-        filmThickness = 100e-9; %m
-        
-        % literature verified  constants
-        [ks, epsilon, mu_h, mu_e, d] = aj_constants_fun(I, incidentWavelength, absorbance, filmThickness);
+    incidentWavelength = 500e-9; %m
+    % absorbance = 1.5e6; %photons absorbed per metre of film thickness, #photons / m
+    absorbance = 10e6; %photons absorbed per metre of film thickness, #photons / m
+    filmThickness = 500e-9; %m
+
+    % literature verified  constants
+    [ks, epsilon, mu_h, mu_e, d] = aj_constants_fun(I, incidentWavelength, absorbance, filmThickness);
+
     
-    
-    % 
+    % Current model:
     dydt = curr_model(I, ks, epsilon, mu_h, mu_e, d);
-    
+
     % time interval (in seconds) to integrate over
     % physcially meaningless as long as enough time passes to reach
     % equilibrium
